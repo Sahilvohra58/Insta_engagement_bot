@@ -8,6 +8,7 @@
 # docker rmi -f $(docker images -aq)
 
 # Push code to artifact registry - create a cloud run job (not service) - schedule the run with cloud scheduler with cron "1 8,9,10,11,16,17,18,21,22,23 * * *"
+# For VM - https://www.youtube.com/watch?v=x4MQZ5cYIYQ and https://www.youtube.com/watch?v=2H3rW3Vpb8s
 
 FROM python:3.10
 

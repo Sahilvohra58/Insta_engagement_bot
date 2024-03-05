@@ -12,9 +12,14 @@ from utils import get_driver_instance, login_instagram, check_remove_save_login_
 #     "password": "Vadodara@1"
 #     }
 
+# instagram_credentials = {
+#     "username": "greenarrowscaping",
+#     "password": "Guelph@12"
+#     }
+
 instagram_credentials = {
-    "username": "greenarrowscaping",
-    "password": "Guelph@12"
+    "username": "sahil2024insta",
+    "password": "Guelph@1"
     }
 
 # target_influencer = "heytony.agency"
