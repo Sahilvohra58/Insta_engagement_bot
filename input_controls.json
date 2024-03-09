@@ -1,0 +1,40 @@
+{
+    "i3reminders": {
+        "username": "i3reminders",
+        "password": "i3Institute!!!",
+        "comments_likes_lower_limit": 10,
+        "comments_likes_upper_limit": 15,
+        "all_likes_duration": 3420,
+        "max_posts_scrolls_per_influencer": 30,
+        "retry_wait_time": 240,
+        "wait_between_post_intervals": 60,
+        "telegram_api": "7186132763:AAHiIfZLvCEZ0f6XHj5nMuTI7tJrnK9Dfo4",
+        "telegram_group_id": -4148825294,
+        "target_influencers": [
+            "ibrahimhindy", "isna_canada", "scdawah", "mohammedhijabofficial", "thinkingmuslimpodcast", 
+            "5pillarsnews", "salhachimi", "thatmuslimguyy", "alidawah", "histopalestine", 
+            "mikaeelahmedsmith", "uticamasjid", "toxaidworker", "ieraorg", "shaykhalaa", 
+            "dilly.hussain88", "bloodxbrothers", "sacred_ummah", "themuslimcowboy", 
+            "the3muslims", "mradnanrashid", "asrarrashidofficial", "musaadnan", "asimkhan21c"
+        ]
+    },
+    "imam.mubeen": {
+        "username": "imam.mubeen",
+         "password": "Guelph@1",
+        "comments_likes_lower_limit": 10,
+        "comments_likes_upper_limit": 15,
+        "all_likes_duration": 3420,
+        "max_posts_scrolls_per_influencer": 30,
+        "retry_wait_time": 240,
+        "wait_between_post_intervals": 60,
+        "telegram_api": "6941522882:AAFLGh0Ug5SfwsJmmDPMOndqWsoG1x52PcQ",
+        "telegram_group_id": -4182820472,
+        "target_influencers": [
+            "ibrahimhindy", "isna_canada", "scdawah", "mohammedhijabofficial", "thinkingmuslimpodcast", 
+            "5pillarsnews", "salhachimi", "thatmuslimguyy", "alidawah", "histopalestine", 
+            "mikaeelahmedsmith", "uticamasjid", "toxaidworker", "ieraorg", "shaykhalaa", 
+            "dilly.hussain88", "bloodxbrothers", "sacred_ummah", "themuslimcowboy", 
+            "the3muslims", "mradnanrashid", "asrarrashidofficial", "musaadnan", "asimkhan21c"
+        ]
+    }
+}

@@ -1,10 +1,19 @@
-version: "2_4"
+version: "1.0"
 services:
   like_comments_i3:
-    container_name: like_comments_i3_container
-    command: python3 like_comments_i3.py
-    ports: 
-      - 1234:1234 
+    container_name: "like_comments_i3_container"
+    command: "python3 like_comments.py --username 'i3reminders'"
+    # ports: 
+    #   - 1234:1234 
     build:
-    context: .
-    dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
+
+  like_comments_imam_mubeen:
+    container_name: "like_comments_imam_mubeen_container"
+    command: "python3 like_comments.py --username 'imam.mubeen'"
+    # ports: 
+      # - 1234:1234 
+    build:
+      context: .
+      dockerfile: Dockerfile
