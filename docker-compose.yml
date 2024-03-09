@@ -1,0 +1,10 @@
+version: "2_4"
+services:
+  like_comments_i3:
+    container_name: like_comments_i3_container
+    command: python3 like_comments_i3.py
+    ports: 
+      - 1234:1234 
+    build:
+    context: .
+    dockerfile: Dockerfile

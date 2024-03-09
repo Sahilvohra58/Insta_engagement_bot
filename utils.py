@@ -1,4 +1,5 @@
 import time
+import requests
 import random
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -24,7 +25,7 @@ def get_driver_instance(url):
         )
     driver.get(url)
     driver.maximize_window()
-    time.sleep(5)
+    driver.implicitly_wait(5) 
     return driver
 
 def login_instagram(driver, username, password):
@@ -123,9 +124,9 @@ def find_and_click_close_button(driver):
 
 def load_all_comments(driver):
     try:
-        while True:  
+        for _ in range(10):  
             try:
-                while True:
+                for _ in range(10):
                     driver.find_elements(By.XPATH, '//span[contains(text(), "View replies ")]')[0].click()
                     time.sleep(2)
             except:
@@ -179,17 +180,6 @@ def click_profile_pic_for_story(driver, target_username):
     driver.find_element(By.XPATH, f"""//img[@alt="{target_username}'s profile picture"]""").click()
     time.sleep(1)
 
-
-# def like_comments(driver):
-#     try:
-#         comment_like_buttons_list = driver.find_elements(By.XPATH, '//*[local-name()="svg" and @aria-label="Like" and @height=12 and @width=12]')
-#         for comment_like_button in comment_like_buttons_list:
-#             if random.choice([True, False]):
-#                 comment_like_button.click()
-#                 time.sleep(1)
-#     except NoSuchElementException:
-#         return "No comments found to like" 
-
 def unlike_like_comments(driver, action):
     try:
         comment_like_buttons_list = driver.find_elements(By.XPATH, f'//*[local-name()="svg" and @aria-label="{action}" and @height=12 and @width=12]')
@@ -202,3 +192,65 @@ def unlike_like_comments(driver, action):
                     continue
     except NoSuchElementException:
         return f"No comments found to {action}" 
+    
+
+def unlike_random_comments(driver):
+    try:
+        comment_like_buttons_list = driver.find_elements(By.XPATH, f'//*[local-name()="svg" and @aria-label="Unlike" and @height=12 and @width=12]')
+        for comment_like_button in comment_like_buttons_list:
+            if random.choice([True, False]):
+                try:
+                    comment_like_button.click()
+                    time.sleep(2)
+                except StaleElementReferenceException:
+                    continue
+    except NoSuchElementException:
+        return f"No comments found to Unlike"
+
+def send_telegram_message(group_id, message_text, api_url):
+    parameters = {
+      "chat_id": group_id,
+      "text": message_text
+    }
+
+    requests.get(api_url + "/sendMessage", data=parameters)
+    
+
+def like_comments(driver, upper_limit, lower_limit, all_likes_duration, telegram_group_id, telegram_api_url, target_influencer):
+    duration_range = range(int(all_likes_duration/upper_limit), int(all_likes_duration/lower_limit)+1)
+    total_likes_tbd = random.choice(range(lower_limit, upper_limit+1))
+
+    try:
+        comment_like_buttons_list = driver.find_elements(By.XPATH, f'//*[local-name()="svg" and @aria-label="Like" and @height=12 and @width=12]')
+        comment_like_buttons_list_len = len(comment_like_buttons_list)
+
+        if comment_like_buttons_list_len != 0:
+            if total_likes_tbd < comment_like_buttons_list_len:
+                likes_indexes = sorted(random.sample(range(len(comment_like_buttons_list)), total_likes_tbd)) 
+            else:
+                likes_indexes = list(range(comment_like_buttons_list_len))
+
+            for idx, comment_like_button in enumerate(comment_like_buttons_list):
+                if idx in likes_indexes:
+                    try:
+                        comment_like_button.click()
+                        time.sleep(random.choice(duration_range))
+                        # time.sleep(1)
+                    except StaleElementReferenceException:
+                        continue
+
+            send_telegram_message(
+                group_id=telegram_group_id, 
+                message_text=f"Total comments liked since last update - {len(likes_indexes)}", 
+                api_url=telegram_api_url
+                )
+        else:
+            send_telegram_message(
+                group_id=telegram_group_id, 
+                message_text=f"Found post with no comments for - {target_influencer}", 
+                api_url=telegram_api_url
+                )
+            time.sleep(5)
+        
+    except NoSuchElementException:
+        return f"No comments found to like" 

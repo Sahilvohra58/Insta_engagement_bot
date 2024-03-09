@@ -6,26 +6,22 @@ from utils import get_driver_instance, login_instagram, check_remove_save_login_
     click_home_button, search_and_open_profile, get_posts_on_page, open_post, load_all_comments, click_next_post, \
     unlike_random_comments, like_comments, send_telegram_message
 
-# instagram_credentials = {
-#     "username": "i3reminders",
-#     "password": ""
-#     }
-
 instagram_credentials = {
-    "username": "sahil2024insta",
-    "password": "Guelph@1"
+    "username": "i3reminders",
+    "password": "i3Institute!!!"
     }
+
+# instagram_credentials = {
+#     "username": "sahil2024insta",
+#     "password": "Guelph@1"
+#     }
 
 comments_likes_lower_limit = 10
 comments_likes_upper_limit = 15
-# all_likes_duration = 3420
-all_likes_duration = 40
-# max_posts_scrolls_per_influencer = 30
-max_posts_scrolls_per_influencer = 5
-# retry_wait_time = 240
-retry_wait_time = 15
-# wait_between_post_intervals = 60
-wait_between_post_intervals = 10
+all_likes_duration = 3420
+max_posts_scrolls_per_influencer = 30
+retry_wait_time = 240
+wait_between_post_intervals = 60
 
 telegram_api = "7186132763:AAHiIfZLvCEZ0f6XHj5nMuTI7tJrnK9Dfo4"
 API_URL = f"https://api.telegram.org/bot{telegram_api}"

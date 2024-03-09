@@ -36,4 +36,4 @@ RUN pip install --upgrade pip
 RUN pip install selenium==4.9.1
 RUN pip install webdriver_manager==4.0.0
 
-CMD [ "/bin/bash" ]
+# ENTRYPOINT [ "Python3", "like_comments_i3.py" ]
