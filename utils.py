@@ -3,11 +3,11 @@ import requests
 import random
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+
+# '//div[@class="_aarf _aarg _a9zp"]' profile_story button
 
 def get_driver_instance(url):
 

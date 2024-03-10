@@ -1,4 +1,4 @@
-version: "1.0"
+version: "3.3"
 services:
   like_comments_i3:
     container_name: "like_comments_i3_container"
