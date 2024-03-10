@@ -1,3 +1,4 @@
+# run all commands with sudo in beginning for permission issues
 sudo apt-get update
 sudo apt-get install docker.io
 sudo apt-get install docker-compose
