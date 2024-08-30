@@ -1,0 +1,48 @@
+Learning data science doesn't have to feel like cracking a secret code.
+
+(Trust me, It’s simpler than it looks!)
+
+Here’s how I went from “Data what?” to “Hey, I can do this!” in just 60 days:
+
+Follow me (Sahil Vohra - https://www.linkedin.com/in/sahil-vohra/) to learn daily data with fun...
+
+Days 1-10: Foundation Building
+📘 Objective: Get the basics down.
+
+Day 1-2: I started with a beginner-friendly course. No shame in starting at square one!
+Day 3-6: Dived into Python—cue the “a-ha” moments. Python quickly became my new best friend.
+Day 7-10: Wrapped my head around basic statistics. Finally figured out what all those mean and median jokes were about.
+Days 11-20: Practice with Projects
+🛠 Objective: Start getting my hands dirty.
+
+Day 11-14: Tackled my first project with a simple dataset. The satisfaction of making sense of numbers was real.
+Day 15-18: Ventured into data visualization. I turned boring spreadsheets into colorful graphs—I felt like a magician!
+Day 19-20: Posted my first project on GitHub. A small step for me, a giant leap for my confidence.
+Days 21-30: Machine Learning Adventures
+🤖 Objective: Enter the world of ML.
+
+Day 21-23: Learned about supervised learning. It felt like unlocking a new level in a video game.
+Day 24-27: Worked on a classification project. Predicting outcomes suddenly became my new party trick.
+Day 28-30: Dipped my toes into unsupervised learning. It was confusing at first, but I started seeing patterns everywhere.
+Days 31-40: Going Deeper
+🔍 Objective: Get serious about data science.
+
+Day 31-34: Explored advanced algorithms. Decision trees and random forests became my weekend buddies.
+Day 35-37: Took on a Kaggle competition. Competing against others pushed me out of my comfort zone, and I loved it.
+Day 38-40: Began learning neural networks. It was like teaching a robot to think—a bit surreal but fascinating.
+Days 41-50: Specialization Time
+🔧 Objective: Find my niche.
+
+Day 41-43: Chose to focus on NLP (natural language processing). Who knew teaching machines to understand language could be so cool?
+Day 44-47: Started a specialized project. It felt great to dive deep into something I was genuinely excited about.
+Day 48-50: Shared my progress on LinkedIn. The support from the community was amazing.
+Days 51-60: Polish and Network
+🌐 Objective: Fine-tune my skills and expand my circle.
+
+Day 51-53: Refined my projects. Polishing the details felt like adding the cherry on top.
+Day 54-56: Joined data science forums and LinkedIn groups. Connecting with others made the journey less lonely and more fun.
+Day 57-60: Planned my next steps. Whether it’s landing a job or diving into more advanced topics, the journey continues.
+Remember: Progress over perfection.
+If I can do it, you definitely can too. Stay consistent, keep it fun, and watch your skills grow.
+
+Which part of my journey resonates with you the most?
