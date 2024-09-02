@@ -21,13 +21,14 @@ def get_all_questions(driver):
     all_questions_df = pd.DataFrame(all_questions, columns=["questions"])
     all_questions_df.to_csv("allQuestions.csv", index=False)
 
-def get_element(driver, element_xpath):
+def get_element(driver, element_xpath, show_exception=False):
     try:
         element = driver.find_element(By.XPATH, element_xpath)
         time.sleep(2)
         return element
     except NoSuchElementException:
-        print(f"Cannot find the element - {element_xpath}")
+        if show_exception:
+            print(f"Cannot find the element - {element_xpath}")
         return None
 
 def input_text_in_element(element, text):
@@ -127,8 +128,6 @@ def login_linkedin(driver, username, password):
     time.sleep(2)
 
     driver.find_element(By.XPATH, '//button[@type="submit"]').click()
-    time.sleep(8)
-
 
 def get_gpt_response(question):
     ans_len = 1000

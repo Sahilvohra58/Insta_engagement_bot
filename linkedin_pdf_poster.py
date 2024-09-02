@@ -3,6 +3,8 @@ import time
 from selenium import webdriver
 from linkedin_utils import login_linkedin, get_element, input_text_in_element, press_escape
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 
 linkedin_login_url = "https://www.linkedin.com/login"
 linkedin_feed = "https://www.linkedin.com/feed/"
@@ -19,7 +21,11 @@ x_paths_dict = {
     "save_button": '//span[text()="Save"]',
     "done_button": '//span[text()="Done"]',
     "image_selection_button": '//*[local-name()="svg" and @data-test-icon="image-medium"]',
+    "more_post_options_button": '//*[@data-test-icon="add-medium" and not(@class="media-modifiers-drag-and-drop__dropzone-icon")]',
+    "document_button": '//*[@data-test-icon="sticky-note-medium"]',
     "upload_input_button": '//input[@id="media-editor-file-selector__file-input"]',
+    "document_upload_input_button": '//div[@class="local-file-input"]/input',
+    "pdf_name_division": '//input[@placeholder="Add a descriptive title to your document"]', 
     "next_button":'//span[text()="Next"]',
     "post_button":'//span[text()="Post"]',
     }
@@ -32,8 +38,11 @@ all_groups = [
     "AI / ML,Gen AI & DATA Analytics, Data Science . SAP BI/ Analytics Cloud /Tableau /Power BI /Birst", "Artificial Intelligence Innovators, AI, ChatGPT, Gemini, Bing, Copilot & Machine Learning Innovation", "Data Science | Machine Learning | Artificial Intelligence | Big Data | Data Scientist | Blockchain", "Technology Investor Group: FinTech, Artificial Intelligence, Machine Learning, ChatGPT, Blockchain", "Data Mining, Statistics, Big Data, Data Visualization, AI, Machine Learning, and Data Science", "Power BI, AI Analytics, Business Intelligence, Data Science, Analysis, Dashboard, Scientist, Analyst", "AI (Artificial Intelligence) VR (Virtual Reality) Metaverse Robotics Blockchain Web3 - iTechScope", "Artificial Intelligence 🟥", "Big Data - Data Warehouse - IoT - Cloud - AI - Machine Learning - Blockchain", "Computer Vision,Generative AI,Edge Computing,Fine-tune Multimodal LLMs,Robotics,IoT,AR/VR,Medical", "Gen AI & Machine Learning: Data Science, Analytics, ML, NLP, GPT, Prompt Engineering, Robotics & IoT", "AI & ML - Deep Learning, Machine Learning, Artificial Intelligence, Data Science, Big Data Analytics", "Python, Data Analysis, Tableau, Power BI, SQL, Data Science, Statistics, Business Analytics, AI & ML", "Python Developers Community (moderated)", "Technology Leadership 🟥 IT, Artificial Intelligence AI, Big Data, Cybersecurity, Web3, Metaverse 5g", "QuantSpeak and Data Science", "AI Africa | African Artificial Intelligence OpenAI ChatGPT Machine Learning Startups Innovation Tech", "Data Analytics, AI, ML, Data Science, Power BI, Python Developer, Data Scientist & Business Analyst", "Data Science and Artificial Intelligence", "R Programming & Data Science (Moderated by Statistics Globe)", "Data Science, Machine Learning & AI", "Data Science and Analytics Resource", "Artificial Intelligence, Deep & Machine Learning, AI, Big Data, Virtual Assistants,Chatbots", "Machine Learning and Data Science", "AI & ML Data Scientist, Data Analyst, Data Engineer, Python Developer, Software Full Stack Developer", "Women in Data Science (WiDS)", "Data Science in Healthcare", "Data Warehouse - Big Data - Business Intelligence - Cloud - Data Science - ETL",
     "Data Science Central", "Gen AI & Machine Learning, Data Scientist, Data Analyst, Python Software Engineer, ML Data Analytics", "AI, ML, Data Science & Analytics: Data Engineer, Data Scientist, Data Analyst, Python & AI Developer", "Cybersecurity and Artificial Intelligence (AI) Frameworks and Maturity Models", "Hot Science- AI | Tech | Robotics | Data | Health | Economics | Space | Earth | Sports | Eng", "Tech Startup CEOs & Investors: Artificial Intelligence, Machine Learning, FinTech, SaaS, ChatGPT", "Advanced Analytics and Data Science", "Artificial Intelligence | Data Science | Quantum", "Software/Technology: AI, Marketing, Social Media, Startups, Blockchain, Human Resources & Metaverse"
 ]
+text_to_post = open("post_content.txt", "r").read()
+print(text_to_post)
 
-photos_to_post_path = "/Users/savohra/Desktop/jobsearchmeme.jpg"
+pdf_to_post_path = "/Users/savohra/Downloads/Top_Python_libs.pdf"
+pdf_name = "Top Python Libraries for Data Science"
 
 driver = webdriver.Firefox()
 driver.get(linkedin_login_url)
@@ -62,10 +71,16 @@ for group_name in all_groups:
         get_element(driver=driver, element_xpath=x_paths_dict["save_button"]).click()
         get_element(driver=driver, element_xpath=x_paths_dict["done_button"]).click()
 
-        get_element(driver=driver, element_xpath=x_paths_dict["image_selection_button"]).click()
-        get_element(driver=driver, element_xpath=x_paths_dict["upload_input_button"]).send_keys(photos_to_post_path)
-        get_element(driver=driver, element_xpath=x_paths_dict["next_button"]).click()
-
+        get_element(driver=driver, element_xpath=x_paths_dict["more_post_options_button"]).click()
+        get_element(driver=driver, element_xpath=x_paths_dict["document_button"]).click()
+        get_element(driver=driver, element_xpath=x_paths_dict["document_upload_input_button"]).send_keys(pdf_to_post_path)
+        
+        input_text_in_element(
+            element=driver.find_element(By.XPATH, x_paths_dict["pdf_name_division"]),
+            text=pdf_name,
+            )
+        time.sleep(10)
+        get_element(driver=driver, element_xpath=x_paths_dict["done_button"]).click()
         post_writing_element = get_element(driver=driver, element_xpath=x_paths_dict["post_writing_division"])
         post_writing_element.click()
         post_writing_element.send_keys(Keys.COMMAND + 'v')
@@ -74,6 +89,7 @@ for group_name in all_groups:
     
     except Exception as E:
         print(f"Got Error posting to group - {group_name} - {E}")
+        # input("PAUSED - Press Enter to play")
     
     time.sleep(10)
 
