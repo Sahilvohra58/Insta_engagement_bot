@@ -10,7 +10,6 @@ linkedin_login_url = "https://www.linkedin.com/login"
 linkedin_feed = "https://www.linkedin.com/feed/"
 
 
-
 x_paths_dict = {
     "post_text_button": '//span[@class="truncate block text-align-left"]',
     "post_writing_division": '//div[@data-placeholder="What do you want to talk about?"]',
@@ -38,11 +37,10 @@ all_groups = [
     "AI / ML,Gen AI & DATA Analytics, Data Science . SAP BI/ Analytics Cloud /Tableau /Power BI /Birst", "Artificial Intelligence Innovators, AI, ChatGPT, Gemini, Bing, Copilot & Machine Learning Innovation", "Data Science | Machine Learning | Artificial Intelligence | Big Data | Data Scientist | Blockchain", "Technology Investor Group: FinTech, Artificial Intelligence, Machine Learning, ChatGPT, Blockchain", "Data Mining, Statistics, Big Data, Data Visualization, AI, Machine Learning, and Data Science", "Power BI, AI Analytics, Business Intelligence, Data Science, Analysis, Dashboard, Scientist, Analyst", "AI (Artificial Intelligence) VR (Virtual Reality) Metaverse Robotics Blockchain Web3 - iTechScope", "Artificial Intelligence 🟥", "Big Data - Data Warehouse - IoT - Cloud - AI - Machine Learning - Blockchain", "Computer Vision,Generative AI,Edge Computing,Fine-tune Multimodal LLMs,Robotics,IoT,AR/VR,Medical", "Gen AI & Machine Learning: Data Science, Analytics, ML, NLP, GPT, Prompt Engineering, Robotics & IoT", "AI & ML - Deep Learning, Machine Learning, Artificial Intelligence, Data Science, Big Data Analytics", "Python, Data Analysis, Tableau, Power BI, SQL, Data Science, Statistics, Business Analytics, AI & ML", "Python Developers Community (moderated)", "Technology Leadership 🟥 IT, Artificial Intelligence AI, Big Data, Cybersecurity, Web3, Metaverse 5g", "QuantSpeak and Data Science", "AI Africa | African Artificial Intelligence OpenAI ChatGPT Machine Learning Startups Innovation Tech", "Data Analytics, AI, ML, Data Science, Power BI, Python Developer, Data Scientist & Business Analyst", "Data Science and Artificial Intelligence", "R Programming & Data Science (Moderated by Statistics Globe)", "Data Science, Machine Learning & AI", "Data Science and Analytics Resource", "Artificial Intelligence, Deep & Machine Learning, AI, Big Data, Virtual Assistants,Chatbots", "Machine Learning and Data Science", "AI & ML Data Scientist, Data Analyst, Data Engineer, Python Developer, Software Full Stack Developer", "Women in Data Science (WiDS)", "Data Science in Healthcare", "Data Warehouse - Big Data - Business Intelligence - Cloud - Data Science - ETL",
     "Data Science Central", "Gen AI & Machine Learning, Data Scientist, Data Analyst, Python Software Engineer, ML Data Analytics", "AI, ML, Data Science & Analytics: Data Engineer, Data Scientist, Data Analyst, Python & AI Developer", "Cybersecurity and Artificial Intelligence (AI) Frameworks and Maturity Models", "Hot Science- AI | Tech | Robotics | Data | Health | Economics | Space | Earth | Sports | Eng", "Tech Startup CEOs & Investors: Artificial Intelligence, Machine Learning, FinTech, SaaS, ChatGPT", "Advanced Analytics and Data Science", "Artificial Intelligence | Data Science | Quantum", "Software/Technology: AI, Marketing, Social Media, Startups, Blockchain, Human Resources & Metaverse"
 ]
-text_to_post = open("post_content.txt", "r").read()
-print(text_to_post)
 
-pdf_to_post_path = "/Users/savohra/Downloads/Top_Python_libs.pdf"
-pdf_name = "Top Python Libraries for Data Science"
+
+pdf_to_post_path = "/Users/savohra/Downloads/Books to read for ML.pdf"
+pdf_name = "Essential Books to read for ML"
 
 driver = webdriver.Firefox()
 driver.get(linkedin_login_url)
@@ -79,7 +77,7 @@ for group_name in all_groups:
             element=driver.find_element(By.XPATH, x_paths_dict["pdf_name_division"]),
             text=pdf_name,
             )
-        time.sleep(10)
+        time.sleep(30)
         get_element(driver=driver, element_xpath=x_paths_dict["done_button"]).click()
         post_writing_element = get_element(driver=driver, element_xpath=x_paths_dict["post_writing_division"])
         post_writing_element.click()

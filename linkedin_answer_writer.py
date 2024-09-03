@@ -1,10 +1,9 @@
 import pandas as pd
 import time
 from selenium import webdriver
-from linkedin_utils import login_linkedin, get_all_questions_list, click_tab, click_question, click_start_contribution, write_contribution, get_gpt_response
+from linkedin_utils import login_linkedin, get_all_questions_dataframe, click_tab, click_question, click_start_contribution, write_contribution, get_gpt_response
 
 linkedin_login_url = "https://www.linkedin.com/login"
-
 
 
 questions_directory = "https://www.linkedin.com/pulse/topics/browse/"
@@ -21,15 +20,14 @@ driver.implicitly_wait(5)
 
 
 login_linkedin(driver=driver, username=username, password=password)
-input("Enter verification if asked and press enter here")
+# input("Enter verification if asked and press enter here")
 
 
-# driver.get(questions_directory)
-# time.sleep(5) 
-# click_tab(driver=driver, tab_name=tab_name)
-# all_questions = get_all_questions_list(driver=driver)
-# all_questions_df = pd.DataFrame(all_questions, columns=["questions"])
-# all_questions_df.to_csv(question_file_name, index=False)
+driver.get(questions_directory)
+time.sleep(5) 
+click_tab(driver=driver, tab_name=tab_name)
+all_questions_df = get_all_questions_dataframe(driver=driver)
+all_questions_df.to_csv(question_file_name, index=False)
 
 print("==> All questions extracted")
 

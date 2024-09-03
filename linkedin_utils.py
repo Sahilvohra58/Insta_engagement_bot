@@ -51,12 +51,22 @@ def click_tab(driver, tab_name):
         None
 
 
-def get_all_questions_list(driver):
-    all_questions_list = []
-    all_questions_list_elements = driver.find_elements(By.XPATH, "//*[@class='mb-1 overflow-hidden break-words font-sans text-lg font-[500] babybear:text-md']")
-    for question_element in all_questions_list_elements:
-        all_questions_list.append(question_element.text)
-    return all_questions_list
+def get_all_questions_dataframe(driver):
+    all_questions_elements = driver.find_elements(By.CSS_SELECTOR, 'div.ml-1')
+    questions_df = []
+
+    for question_element in all_questions_elements:
+        try:
+            question = question_element.find_element(By.CSS_SELECTOR, "h2.mb-1").text
+            contributions = int(question_element.find_element(By.CSS_SELECTOR, 'span.pr-0\\.5').text.replace("contributions", "").replace("contribution", "").replace(" ", ""))
+            questions_df.append([question, contributions])
+        except:
+            print(f"Cannot get question for element - {question_element}")
+
+    questions_df = pd.DataFrame(data=questions_df, columns=["questions", "contributions"])
+    questions_df = questions_df.sort_values(by='contributions', ascending=True)
+
+    return questions_df
 
 
 def click_close_button(driver):
@@ -132,7 +142,7 @@ def login_linkedin(driver, username, password):
 def get_gpt_response(question):
     ans_len = 1000
 
-    while ans_len > 700:
+    for i in range(5):
         completion = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             temperature=0,
@@ -155,12 +165,13 @@ def get_gpt_response(question):
         answer = completion.choices[0].message.content
         finish_reason = completion.choices[0].finish_reason
 
-        print(f"length = {len(answer)} - reason - {finish_reason}")
+        answer = completion.choices[0].message.content
+        answer = answer.replace("*", "")
+        ans_len = len(answer)
 
-        if finish_reason == "stop":
-            answer = completion.choices[0].message.content
-            answer = answer.replace("*", "")
-            ans_len = len(answer)
-            print(ans_len)
-    return answer
+        print(f"length = {ans_len} - reason - {finish_reason}")
+
+        if finish_reason == "stop" and ans_len <= 700:
+            return answer
+    raise Exception(f"Cannot find answer within limits for question - {question}")
     

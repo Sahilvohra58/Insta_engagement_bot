@@ -8,7 +8,6 @@ linkedin_login_url = "https://www.linkedin.com/login"
 linkedin_feed = "https://www.linkedin.com/feed/"
 
 
-
 x_paths_dict = {
     "post_text_button": '//span[@class="truncate block text-align-left"]',
     "post_writing_division": '//div[@data-placeholder="What do you want to talk about?"]',
